@@ -77,7 +77,7 @@ const Login = () => {
     <SafeAreaContainer safeArea={false}>
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <View style={styles.containerHeader} />
-        <View style={[commonStyles.footerContainer, { top: -200, margin: 20 }]}>
+        <View style={[commonStyles.footerContainer, { top: -200, margin: 20,height:SCREEN_HEIGHT * 0.7 }]}>
           <Image
             source={IMAGES.SplashLogo}
             style={{ width: 260, height: 160, alignSelf: "center" }}
@@ -149,35 +149,7 @@ const Login = () => {
               }} // Optional: Change background color when disabled
             />
           </View>
-          {selectedOption != "bus" && (
-            <>
-              <Text center medium bold>
-                Or Continue With
-              </Text>
-              <View row center gap-20 marginV-20>
-                {SOCIAL_LOGIN.map((i) => {
-                  return (
-                    <TouchableOpacity>
-                      <Image
-                        source={i.image}
-                        style={{ width: 50, height: 50 }}
-                        resizeMode="contain"
-                      />
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-              <View row center marginV-20>
-                <Typography color={theme.color.black}>
-                  Don't have an account?
-                </Typography>
-
-                <TouchableOpacity onPress={() => setBottomSheetVisible(true)}>
-                  <Typography textType="semiBold"> Sign Up</Typography>
-                </TouchableOpacity>
-              </View>
-            </>
-          )}
+        
         </View>
       </ScrollView>
 

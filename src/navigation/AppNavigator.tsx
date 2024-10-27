@@ -79,6 +79,8 @@ const AuthStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name={SCREENS.LOGIN} component={Login} />
+
+
       <Stack.Screen name={SCREENS.SIGN_UP} component={SignUp} />
       <Stack.Screen name={SCREENS.DRIVER_SIGNUP} component={DriverSignUp} />
       <Stack.Screen name={SCREENS.REGISTRATION} component={Registration} />
@@ -103,8 +105,11 @@ const AppNavigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen name={SCREENS.HOME} component={BottomTabNavigation} />
+      <Stack.Screen name={SCREENS.PASSENGER} component={Passengers} />
+
+
+      
       <Stack.Screen name={SCREENS.NAV_SCREEN} component={NavigationScreen} />
-      {/* <Stack.Screen name={SCREENS.My_ACTIVITY} component={MyActivity} /> */}
       <Stack.Screen name={SCREENS.NOTIFICATION} component={Notification} />
       <Stack.Screen name={SCREENS.PROFILE} component={Profile} />
       <Stack.Screen name={SCREENS.DELIVERY_DETAILS} component={DeliveryDetails} />
@@ -144,7 +149,6 @@ const AppNavigator = () => {
       <Stack.Screen name={SCREENS.DRIVER_MAIL_DETAIL} component={DriverMailDetail} />
       <Stack.Screen name={SCREENS.ACCEPT_MAIL_RIDE} component={AcceptMailRide} />
       <Stack.Screen name={SCREENS.NAV_DRAVER_MAIL_SCREEN} component={NavigationDriverMailScreen} />
-      <Stack.Screen name={SCREENS.PASSENGER} component={Passengers} />
 
 
 

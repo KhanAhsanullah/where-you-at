@@ -30,7 +30,7 @@ const Splash = () => {
                 videoRef.current.seek(20);  
                 console.log('Video reached 20 seconds');
               }
-            }, 10000);  // Timeout for 20 seconds
+            }, 5000);  // Timeout for 20 seconds
           }}
         />
       </View>
