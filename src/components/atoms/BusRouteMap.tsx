@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import MapView, { Polyline, Marker } from "react-native-maps";
 import { SCREEN_HEIGHT, SCREEN_WIDTH, theme } from "../../constants";
 import { Typography } from "./Typography";
 
@@ -21,7 +22,7 @@ const BusRouteMap = (props: Props) => {
 
   return (
     <View style={styles.container}>
-      {/* <MapView
+      <MapView
         style={[styles.map,{
           borderRadius: borderMqp,
           margin: marginMap,
@@ -44,7 +45,7 @@ const BusRouteMap = (props: Props) => {
           coordinate={busRouteCoordinates[busRouteCoordinates.length - 1]}
           title="End"
         />
-      </MapView> */}
+      </MapView>
 
       {showCarpoolRide && (
         <View style={styles.carpolRideView}>

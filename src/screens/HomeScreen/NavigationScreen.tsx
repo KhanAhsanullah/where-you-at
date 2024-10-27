@@ -9,6 +9,7 @@ import BusRouteMap from "../../components/atoms/BusRouteMap";
 import { commonStyles } from "../../globalStyle";
 import BottomSheet from "../../components/atoms/CustomModal";
 import LottieView from "lottie-react-native";
+import StarRating from "react-native-star-rating-widget";
 import { navigate } from "../../navigation/RootNavigation";
 
 const NavigationScreen = () => {
@@ -101,14 +102,14 @@ const NavigationScreen = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the dummy
             </Typography>
-            {/* <View marginV-20>
+            <View marginV-20>
               <StarRating
                 rating={rating}
                 onChange={(newRating) => setRating(newRating)}
                 starSize={40}
                 color={"#FFD700"}
               />
-            </View> */}
+            </View>
           </View>
         </BottomSheet>
       )}

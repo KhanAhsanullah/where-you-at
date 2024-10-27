@@ -27,17 +27,27 @@ const DrawerScreen = () => {
   const userRole = useSelector((state:RootState) => state.user.userType)
 
   const DRAWERTABS = [
-    { key: 0, 
-      title: "Home", 
-      navigateTo: SCREENS.HOME  
-    },
+    { key: 0, title: "Home", 
+      navigateTo:  userRole === "user" ?  SCREENS.HOME : SCREENS.HOME_DRIVER,  image: IMAGES.homeUser },
     {
       key: 1,
       title: "Settings",
       navigateTo: SCREENS.SETTING,
       image: IMAGES.setting,
     },
-   
+    {
+      key: 2,
+      title: userRole === "user" ?  "My Cards" : "My Wallet",
+      navigateTo: userRole === "user" ?  SCREENS.MY_CARD : SCREENS.My_WALLET,
+      image: IMAGES.card,
+    },
+    userRole === "driver" &&
+    {
+      key: 9,
+      title: "My Documents",
+      navigateTo: SCREENS.MY_DOCUMENTS,
+      image: IMAGES.card,
+    },
     {
       key: 3,
       title: "Contact Us",

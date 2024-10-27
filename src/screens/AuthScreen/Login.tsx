@@ -43,16 +43,16 @@ const Login = () => {
       const id = setInterval(() => {
         setSeconds((prevSeconds) => {
           if (prevSeconds <= 1) {
-            clearInterval(id); 
+            clearInterval(id); // Stop the countdown when it reaches zero
             return 0;
           }
-          return prevSeconds - 1; 
+          return prevSeconds - 1; // Decrement seconds
         });
-      }, 1000);
+      }, 1000); // Update every second
 
-      setIntervalId(id);
+      setIntervalId(id); // Store the interval ID so it can be cleared later
 
-      return () => clearInterval(id); 
+      return () => clearInterval(id); // Cleanup the interval when the modal closes or the component unmounts
     }
   }, [OtpModal, seconds]);
 
@@ -64,7 +64,7 @@ const Login = () => {
   // Function to validate the form
   const isFormValid = () => {
     // Check if email and password are valid
-    const emailValid = /\S+@\S+\.\S+/.test(email); 
+    const emailValid = /\S+@\S+\.\S+/.test(email); // Simple email validation
     const passwordValid =
       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(
         passwordVal
@@ -77,7 +77,7 @@ const Login = () => {
     <SafeAreaContainer safeArea={false}>
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <View style={styles.containerHeader} />
-        <View style={[commonStyles.footerContainer, { top: -200, margin: 20,height:SCREEN_HEIGHT * 0.75 }]}>
+        <View style={[commonStyles.footerContainer, { top: -200, margin: 20 }]}>
           <Image
             source={IMAGES.SplashLogo}
             style={{ width: 260, height: 160, alignSelf: "center" }}
@@ -141,15 +141,43 @@ const Login = () => {
                   dispatch(setUserType("user"));
                 }
               }}
-              disabled={!isFormValid()} 
+              disabled={!isFormValid()} // Disable the button if the form is invalid
               style={{
                 backgroundColor: isFormValid()
                   ? theme.color.secondry
-                  : "#999B9F",
-              }} 
+                  : "#999B9F", // Change color based on validity
+              }} // Optional: Change background color when disabled
             />
           </View>
-          
+          {selectedOption != "bus" && (
+            <>
+              <Text center medium bold>
+                Or Continue With
+              </Text>
+              <View row center gap-20 marginV-20>
+                {SOCIAL_LOGIN.map((i) => {
+                  return (
+                    <TouchableOpacity>
+                      <Image
+                        source={i.image}
+                        style={{ width: 50, height: 50 }}
+                        resizeMode="contain"
+                      />
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+              <View row center marginV-20>
+                <Typography color={theme.color.black}>
+                  Don't have an account?
+                </Typography>
+
+                <TouchableOpacity onPress={() => setBottomSheetVisible(true)}>
+                  <Typography textType="semiBold"> Sign Up</Typography>
+                </TouchableOpacity>
+              </View>
+            </>
+          )}
         </View>
       </ScrollView>
 

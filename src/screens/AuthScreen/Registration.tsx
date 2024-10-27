@@ -108,12 +108,12 @@ const Registration = () => {
             navigate(SCREENS.HOME_DRIVER)
           }}
         >
-          {/* <LottieView
+          <LottieView
             ref={animationRef}
             source={require("../../components/Animation/checkLottie.json")}
             autoPlay
             style={{ height: 200, width: 250, alignSelf: "center" }}
-          /> */}
+          />
           <View center marginV-10>
             <Typography
               textType="bold"

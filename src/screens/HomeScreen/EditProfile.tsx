@@ -51,46 +51,46 @@ const EditProfile = (props: any) => {
     //   onBack();
     // });
   };
-  // const takePhotoFromCamera = () => {
-  //   console.log("image", selectImg);
-  //   ImagePicker.openCamera({
-  //     width: 300,
-  //     height: 400,
-  //     cropping: true,
-  //   })
-  //     .then((images) => {
-  //       console.log("img", images);
-  //       setSelectImg({
-  //         name: images.filename || `image_${new Date().getDate()}`,
-  //         type: images.mime,
-  //         uri: images.path,
-  //       });
-  //       setVisible(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error);
-  //       setVisible(false);
-  //     });
-  // };
-  // const choosePhotoFromLibrary = () => {
-  //   ImagePicker.openPicker({
-  //     width: 300,
-  //     height: 400,
-  //   })
-  //     .then((images) => {
-  //       console.log("gal", images);
-  //       setSelectImg({
-  //         name: images.filename || `image_${new Date().getDate()}`,
-  //         type: images.mime,
-  //         uri: images.path,
-  //       });
-  //       setVisible(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error);
-  //       setVisible(false);
-  //     });
-  // };
+  const takePhotoFromCamera = () => {
+    console.log("image", selectImg);
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    })
+      .then((images) => {
+        console.log("img", images);
+        setSelectImg({
+          name: images.filename || `image_${new Date().getDate()}`,
+          type: images.mime,
+          uri: images.path,
+        });
+        setVisible(false);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setVisible(false);
+      });
+  };
+  const choosePhotoFromLibrary = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+    })
+      .then((images) => {
+        console.log("gal", images);
+        setSelectImg({
+          name: images.filename || `image_${new Date().getDate()}`,
+          type: images.mime,
+          uri: images.path,
+        });
+        setVisible(false);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setVisible(false);
+      });
+  };
   return (
     <SafeAreaContainer mode={"dark"} safeArea={false}>
       <Header titleText="Edit Profile" />
@@ -191,14 +191,14 @@ const EditProfile = (props: any) => {
           <View style={styles.modalStyle}>
             <TouchableOpacity
               style={styles.profileStyle}
-              // onPress={takePhotoFromCamera}
+              onPress={takePhotoFromCamera}
             >
               <Typography style={styles.textStyle}>Take Photos</Typography>
             </TouchableOpacity>
             <View style={styles.lineBar} />
             <TouchableOpacity
               style={styles.profileStyle}
-              // onPress={choosePhotoFromLibrary}
+              onPress={choosePhotoFromLibrary}
             >
               <Typography style={styles.textStyle}>
                 Choose from Gallery
