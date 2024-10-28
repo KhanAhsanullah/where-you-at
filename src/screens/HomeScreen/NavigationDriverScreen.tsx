@@ -16,20 +16,10 @@ import { CustomBtn } from "../../components/atoms/CustomBtn";
 const NavigationDriverScreen = () => {
   const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
   const animationRef = useRef(null);
-  const [ratingModal, setRatingModal] = useState(false);
-  const [rating, setRating] = useState(4);
-  const [rating2, setRating2] = useState(3);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setBottomSheetVisible(true);
-  //   }, 5000); 
-
-  //   return () => clearTimeout(timer);
-  // }, []);
   return (
     <SafeAreaContainer safeArea={false}>
-      <Header titleText="Navigation" rightIcon={IMAGES.chatImg} onPressRight={()=>navigate(SCREENS.CHAT)} />
+      <Header titleText="Navigation" rightIcon={false} />
       <View style={{ flex: 1}}>
         <BusRouteMap />
         <View
@@ -45,9 +35,9 @@ const NavigationDriverScreen = () => {
               resizeMode="contain"
             />
             <View>
-              <Typography textType="bold" color={"#BEC2CE"} size={theme.fontSize.large20}>Dropoff location</Typography>
-              <Typography textType="semiBold" size={theme.fontSize.medium}>ABC street, Near ABC Road, Toronto.</Typography>
-              <CustomBtn style={{marginVertical:10}} label="End Ride" onPress={()=> setBottomSheetVisible(true)}/>
+              <Typography textType="bold" color={"#BEC2CE"} size={theme.fontSize.large}>Dropoff location</Typography>
+              <Typography textType="semiBold" size={theme.fontSize.small}>ABC street, Near ABC Road, Toronto.</Typography>
+              <CustomBtn style={{marginVertical:20,}} label="End Ride" onPress={()=> setBottomSheetVisible(true)}/>
             </View>
           </View>
         </View>
@@ -56,7 +46,7 @@ const NavigationDriverScreen = () => {
         <BottomSheet
           onClose={() => {
             setBottomSheetVisible(!isBottomSheetVisible);
-            setRatingModal(true);
+            navigate(SCREENS.HOME)
           }}
         >
           <LottieView
@@ -78,62 +68,7 @@ const NavigationDriverScreen = () => {
           </View>
         </BottomSheet>
       )}
-        {ratingModal && (
-        <BottomSheet
-          onClose={() => {
-            navigate(SCREENS.HOME);
-          }}
-        >
-          {/* <LottieView
-            ref={animationRef}
-            source={require("../../components/Animation/MessageLottie.json")}
-            autoPlay
-            style={{ height: 150, width: 150, alignSelf: "center" }}
-          /> */}
-          <View center marginV-10>
-            <Typography
-              textType="bold"
-              size={theme.fontSize.large20}
-              style={{ marginVertical: 20 }}
-            >
-              Add your Ratings
-            </Typography>
-            <Typography
-              color={theme.color.tgray}
-              size={theme.fontSize.extraSmall12}
-            >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the dummy
-            </Typography>
-            <View marginV-20>
-              <View center>
-              <Image source={IMAGES.avatar} style={{width:60,height:60}}/>
-              </View>
-              <Typography align="center" size={theme.fontSize.extraLarge}>Simon Lewis</Typography>
-              <StarRating
-                rating={rating}
-                onChange={(newRating) => setRating(newRating)}
-                starSize={40}
-                color={"#FFD700"}
-              />
-            </View>
-            <View style={commonStyles.lineBar}/>
-            <View marginV-20>
-              <View center>
-              <Image source={IMAGES.avatar} style={{width:60,height:60}}/>
-              </View>
-              <Typography align="center" size={theme.fontSize.extraLarge}>John Doe</Typography>
-
-              <StarRating
-                rating={rating2}
-                onChange={(newRating) => setRating2(newRating)}
-                starSize={40}
-                color={"#FFD700"}
-              />
-            </View>
-          </View>
-        </BottomSheet>
-      )}
+       
     </SafeAreaContainer>
   );
 };

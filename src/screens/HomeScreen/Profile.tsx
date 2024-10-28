@@ -16,64 +16,104 @@ const Profile = () => {
 
   return (
     <SafeAreaContainer safeArea={false}>
-      <Header
-        titleText="Profile"
-        leftIcon={IMAGES.menu}
-        leftWidth={25}
-        leftHeight={25}
-        onPressLeft={()=> navigation.openDrawer()}
-      />
+      <Header titleText="My Profile" rightIcon={false} />
 
-      <View center>
-        <Image
-          source={IMAGES.avatar}
-          style={{ width: 80, height: 80 }}
-          resizeMode="contain"
-        />
-      </View>
-      <View padding-20>
-        <Typography
-          color={theme.color.black}
-          textType="semiBold"
-          size={theme.fontSize.large}
-        >
-          Full Name
-        </Typography>
-        <Typography color={theme.color.tgray} size={theme.fontSize.medium}>
-          Simon lewis
-        </Typography>
-
-        <View marginV-20>
-          <Typography
-            color={theme.color.black}
-            textType="bold"
-            size={theme.fontSize.large}
+      <View
+        padding-20
+        margin-20
+        style={{
+          borderRadius: 20,
+          borderWidth: 1,
+          backgroundColor: theme.color.primary,
+        }}
+      >
+        {/* Left Side  */}
+        <View row gap-10>
+          <View
+            style={{
+              borderBottomEndRadius: 20,
+              borderBottomStartRadius: 20,
+              borderTopEndRadius: 50,
+              borderTopStartRadius: 50,
+              padding: 10,
+              borderWidth: 1,
+              backgroundColor: theme.color.white,
+            }}
           >
-            Email Address
-          </Typography>
-          <Typography color={theme.color.tgray} size={theme.fontSize.medium}>
-            Simon_lewis123@gmail.com
-          </Typography>
+            <Image
+              source={IMAGES.avatar}
+              style={{ width: 100, height: 100 }}
+              resizeMode="contain"
+            />
+            <Image
+              source={IMAGES.SplashLogo}
+              style={{ width: 100, height: 100 }}
+              resizeMode="contain"
+            />
+          </View>
+          {/* Right Side  */}
+          <View>
+            <Typography
+              textType="bold"
+              color={theme.color.white}
+              size={theme.fontSize.extraLarge}
+            >
+              Simon Lewis
+            </Typography>
+            <View
+              style={{
+                borderRadius: 10,
+                borderWidth: 1,
+                backgroundColor: theme.color.white,
+              }}
+            >
+              <Typography
+                align="center"
+                color={theme.color.primary}
+                size={theme.fontSize.large24}
+              >
+                Bus Driver
+              </Typography>
+            </View>
+            <View marginV-20>
+              <Typography color={theme.color.white} size={theme.fontSize.large}>
+                Employee Id
+              </Typography>
+              <Typography color={theme.color.white} size={theme.fontSize.large}>
+                1234 567 789
+              </Typography>
+            </View>
+          </View>
         </View>
 
-        <Typography
-          color={theme.color.black}
-          textType="bold"
-          size={theme.fontSize.large}
-        >
-          Phone Number
-        </Typography>
-        <Typography color={theme.color.tgray} size={theme.fontSize.medium}>
-          +1 234 567 8900
-        </Typography>
-        <View marginV-20>
-          <CustomBtn label={"Edit Profile"}  onPress={()=>navigate(SCREENS.EDIT_PROFILE)}/>
+        {/* Bottom Text */}
+        <View row spread marginV-20>
+          <View>
+            <Typography color={theme.color.white} size={theme.fontSize.large}>
+              Contact No
+            </Typography>
+            <Typography
+              color={theme.color.white}
+              size={theme.fontSize.large}
+              textType="semiBold"
+            >
+              +1234 567 889
+            </Typography>
+          </View>
+
+          <View>
+            <Typography color={theme.color.white} size={theme.fontSize.large}>
+              Email Address
+            </Typography>
+            <Typography
+              color={theme.color.white}
+              size={theme.fontSize.large}
+              textType="semiBold"
+            >
+              Abc@gmail.com
+            </Typography>
+          </View>
         </View>
-        <TouchableOpacity onPress={()=>navigate(SCREENS.CHANGE_PASSWORD)}>
-          <Typography align="center" size={theme.fontSize.medium}>
-            Change Password
-          </Typography>
-        </TouchableOpacity>
       </View>
     </SafeAreaContainer>
   );

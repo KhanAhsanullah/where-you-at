@@ -9,6 +9,7 @@ import BusRouteMap from "../../components/atoms/BusRouteMap";
 import { commonStyles } from "../../globalStyle";
 import { navigate } from "../../navigation/RootNavigation";
 import { useNavigation } from "@react-navigation/native";
+import { CustomBtn } from "../../components/atoms/CustomBtn";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -100,6 +101,11 @@ const Home = () => {
               <Typography textType="bold">2:45 PM</Typography>
             </View>
             </View>
+            <CustomBtn
+              label={"Start Ride"}
+              style={{ margin: 20 }}
+              onPress={()=>{navigate(SCREENS.BUS_DETAIL)}}
+            />
           </View>
         </View>
       </ScrollView>

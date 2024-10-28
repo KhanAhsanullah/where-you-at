@@ -7,6 +7,10 @@ export const IMAGES = {
   user: require("../assets/images/user.png"),
   avatar: require("../assets/images/avatar.png"),
 
+  signIcon: require("../assets/images/signIcon.png"),
+  clickIcon: require("../assets/images/clickIcon.png"),
+  
+
   eyeOff: require("../assets/images/eyeOff.png"),
   eyeOn: require("../assets/images/eyeOn.png"),
 
@@ -56,6 +60,7 @@ export const IMAGES = {
   logout:require("../assets/images/logout.png"),
 
   Shipment:require("../assets/images/Shipment.png"),
+  ShipmentTracking:require("../assets/images/ShipmentTracking.png"),
   lineSS:require("../assets/images/lineSS.png"),
 
   userSign:require("../assets/images/userSign.png"),

@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Splash from '../containers/Splash';
 import { AuthStackNavigator } from './AppNavigator';
 import DrawerSCreenNavigator from './AuthStackNavigator';
+import Passengers from '../screens/HomeScreen/Passengers';
 
 const MainNavigation = () => {
   const [isLoading, setIsLoading] = useState(true);

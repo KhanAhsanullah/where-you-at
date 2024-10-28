@@ -24,28 +24,25 @@ const Drawer = createDrawerNavigator();
 
 const DrawerScreen = () => {
   const dispatch = useDispatch();
-  const userRole = useSelector((state:RootState) => state.user.userType)
+  const userRole = useSelector((state: RootState) => state.user.userType);
 
   const DRAWERTABS = [
-    { key: 0, title: "Home", 
-      navigateTo:  userRole === "user" ?  SCREENS.HOME : SCREENS.HOME_DRIVER,  image: IMAGES.homeUser },
+    {
+      key: 0,
+      title: "Home",
+      navigateTo: SCREENS.HOME,
+      image: IMAGES.homeUser,
+    },
     {
       key: 1,
-      title: "Settings",
-      navigateTo: SCREENS.SETTING,
+      title: "Privacy Policy",
+      navigateTo: SCREENS.PRIVACY,
       image: IMAGES.setting,
     },
     {
       key: 2,
-      title: userRole === "user" ?  "My Cards" : "My Wallet",
-      navigateTo: userRole === "user" ?  SCREENS.MY_CARD : SCREENS.My_WALLET,
-      image: IMAGES.card,
-    },
-    userRole === "driver" &&
-    {
-      key: 9,
-      title: "My Documents",
-      navigateTo: SCREENS.MY_DOCUMENTS,
+      title: "Terms & Conditions",
+      navigateTo: SCREENS.TERMS,
       image: IMAGES.card,
     },
     {
@@ -80,10 +77,14 @@ const DrawerScreen = () => {
 
   const CustomDrawerContent = () => (
     <DrawerContentScrollView contentContainerStyle={styles.drawerContent}>
-    <TouchableOpacity style={{position:'absolute',top:30}} onPress={()=>onBack()}>
-      <Icon name="cross" size={30} color={theme.color.black} />
+      <TouchableOpacity
+        style={{ position: "absolute", top: 30 }}
+        onPress={() => onBack()}
+      >
+        <Icon name="cross" size={30} color={theme.color.black} />
       </TouchableOpacity>
-  
+
+      <TouchableOpacity onPress={()=>navigate(SCREENS.PROFILE)}>
       <View gap-10 style={styles.profileContainer}>
         <Image
           source={IMAGES.avatar}
@@ -94,6 +95,9 @@ const DrawerScreen = () => {
           Simon_lewis123
         </Typography>
       </View>
+
+      </TouchableOpacity>
+
       <FlatList
         data={DRAWERTABS}
         renderItem={({ item }) => <CustomDrawerItem item={item} />}
@@ -135,14 +139,14 @@ const DrawerScreen = () => {
             borderBottomRightRadius: 0,
             padding: 10,
           },
-          drawerActiveBackgroundColor:"red",
-          sceneContainerStyle:{backgroundColor:"green"}
+          drawerActiveBackgroundColor: "red",
+          sceneContainerStyle: { backgroundColor: "green" },
         }}
         // sceneContainerStyle={{ backgroundColor: "" }}
         drawerContent={(props) => <CustomDrawerContent />}
         initialRouteName="Home"
       >
-        <Drawer.Screen name="Home"  component={AppNavigator} />
+        <Drawer.Screen name="Home" component={AppNavigator} />
       </Drawer.Navigator>
     </View>
   );

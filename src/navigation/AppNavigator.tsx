@@ -104,14 +104,23 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={SCREENS.HOME} component={BottomTabNavigation} />
+      <Stack.Screen name={SCREENS.HOME} component={Home} />
       <Stack.Screen name={SCREENS.PASSENGER} component={Passengers} />
+      <Stack.Screen name={SCREENS.BUS_DETAIL} component={BusDetails} />
+      <Stack.Screen name={SCREENS.NAV_DRAVER_SCREEN} component={NavigationDriverScreen} />
+      <Stack.Screen name={SCREENS.NAV_SCREEN} component={NavigationScreen} />
+      <Stack.Screen name={SCREENS.PROFILE} component={Profile} />
+      <Stack.Screen name={SCREENS.PRIVACY} component={Privacy} />
+      <Stack.Screen name={SCREENS.TERMS} component={Terms} />
+      <Stack.Screen name={SCREENS.ABOUT} component={About} />
+      <Stack.Screen name={SCREENS.CONTACT_US} component={ContactUs} />
+
+
+
 
 
       
-      <Stack.Screen name={SCREENS.NAV_SCREEN} component={NavigationScreen} />
       <Stack.Screen name={SCREENS.NOTIFICATION} component={Notification} />
-      <Stack.Screen name={SCREENS.PROFILE} component={Profile} />
       <Stack.Screen name={SCREENS.DELIVERY_DETAILS} component={DeliveryDetails} />
       <Stack.Screen name={SCREENS.PAYMENT_METHOD} component={PaymentMethod} />
       <Stack.Screen name={SCREENS.MAIL_DELIVERED} component={MailDelivered} />
@@ -120,22 +129,17 @@ const AppNavigator = () => {
       <Stack.Screen name={SCREENS.BOOK_RIDE} component={BookRide} />
       <Stack.Screen name={SCREENS.E_TICKET} component={ETicket} />
       <Stack.Screen name={SCREENS.SCAN_QR} component={ScanQR} />
-      <Stack.Screen name={SCREENS.BUS_DETAIL} component={BusDetails} />
 
       <Stack.Screen name={SCREENS.SETTING} component={Setting} />
-      <Stack.Screen name={SCREENS.PRIVACY} component={Privacy} />
-      <Stack.Screen name={SCREENS.TERMS} component={Terms} />
-      <Stack.Screen name={SCREENS.ABOUT} component={About} />
+  
       <Stack.Screen name={SCREENS.MY_CARD} component={MyCard} />
       <Stack.Screen name={SCREENS.ADD_CARD} component={AddNewCard} />
-      <Stack.Screen name={SCREENS.CONTACT_US} component={ContactUs} />
       <Stack.Screen name={SCREENS.EDIT_PROFILE} component={EditProfile} />
       <Stack.Screen name={SCREENS.CHANGE_PASSWORD} component={ChangePassword} />
       <Stack.Screen name={SCREENS.HISTORY} component={History} />
       <Stack.Screen name={SCREENS.HISTORY_DETAIL} component={HistoryDetail} />
       <Stack.Screen name={SCREENS.DRIVER_RIDE_DETAIL} component={DriverRideDetail} />
       <Stack.Screen name={SCREENS.ACCEPT_RIDE} component={AcceptRide} />
-      <Stack.Screen name={SCREENS.NAV_DRAVER_SCREEN} component={NavigationDriverScreen} />
       <Stack.Screen name={SCREENS.ACTIVITY_DETAILS} component={ActivityDetail} />
       <Stack.Screen name={SCREENS.My_WALLET} component={MyWallet} />
       <Stack.Screen name={SCREENS.ADD_ACCOUNT} component={AddAccount} />
@@ -155,31 +159,6 @@ const AppNavigator = () => {
     </Stack.Navigator>
   )
 }
-
-const BottomTabNavigation = (props: any) => {
-  const userRole = useSelector((state:RootState) => state.user.userType)
-  const Tab = createBottomTabNavigator();
-  return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      tabBar={(e) => <BottomTabs {...e} {...props} />}
-      screenOptions={{ headerShown: false }}
-    >
-      {userRole === "user" ?
-      <Tab.Screen name={SCREENS.HOME} component={Home} />
-      :
-      <Tab.Screen name={SCREENS.HOME_DRIVER} component={HomeDriver} />
-    }
-     {userRole === "user" ?
-      <Tab.Screen name={SCREENS.My_ACTIVITY} component={MyActivity} />
-      :
-      <Tab.Screen name={SCREENS.POST_HISTORY} component={PostHistory} />
-     }
-      <Tab.Screen name={SCREENS.NOTIFICATION} component={Notification} />
-      <Tab.Screen name={SCREENS.PROFILE} component={Profile} />
-    </Tab.Navigator>
-  );
-};
 
 export { AppNavigator, AuthStackNavigator };
 

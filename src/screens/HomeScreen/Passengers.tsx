@@ -1,23 +1,28 @@
 import React, { useState } from "react";
 import {
   Image,
-  ImageBackground,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
 } from "react-native";
 import { View } from "react-native-ui-lib";
 import SafeAreaContainer from "../../containers/SafeAreaContainer";
-import { IMAGES, SCREENS, theme } from "../../constants";
+import { IMAGES, theme } from "../../constants";
 import { Header } from "../../components/atoms/Header";
 import { Typography } from "../../components/atoms/Typography";
-import { CustomBtn } from "../../components/atoms/CustomBtn";
-import { navigate } from "../../navigation/RootNavigation";
-import BottomSheet from "../../components/atoms/CustomModal";
-import { InputText } from "../../components/atoms/InputText";
 
 const Passengers = () => {
-  const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
+  const [passengers] = useState([
+    { name: "Simon Lewis", available: true },
+    { name: "Alice Johnson", available: false },
+    { name: "Michael Smith", available: true },
+    { name: "Emily Davis", available: false },
+    { name: "Chris Brown", available: true },
+    { name: "Olivia Wilson", available: false },
+    { name: "James Taylor", available: true },
+    { name: "Sophia Anderson", available: false },
+    { name: "Liam Martinez", available: true },
+    { name: "Ava Thomas", available: false },
+  ]);
 
   return (
     <SafeAreaContainer safeArea={false}>
@@ -25,34 +30,47 @@ const Passengers = () => {
         style={{ backgroundColor: "#fff" }}
         showsVerticalScrollIndicator={false}
       >
-        <Header titleText="Passengers" />
+        <Header titleText="Passengers" rightIcon={false} />
         <View padding-20>
-          <View
-            row
-            style={{
-              padding: 10,
-              backgroundColor: "#ECECEC",
-              borderRadius: 20,
-              gap: 10,
-            }}
-          >
-            <Image
-              source={IMAGES.avatar}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View>
-              <Typography>Simon Lewis</Typography>
-              <View row style={{ alignItems: "center" }}>
-                <Typography>4.5</Typography>
+          {passengers.map((passenger, index) => (
+            <View
+              key={index}
+              row spread padding-10 
+              style={{
+                backgroundColor: "#ECECEC",
+                borderRadius: 10,
+                alignItems: 'center',
+                marginBottom: 15,
+              }}
+            >
+              <View row center gap-10>
                 <Image
-                  source={IMAGES.star}
-                  style={{ width: 20, height: 20 }}
+                  source={IMAGES.avatar}
+                  style={{ width: 60, height: 60 }}
+                  resizeMode="contain"
+                />
+                <Typography textType="semiBold" size={theme.fontSize.medium}>
+                  {passenger.name}
+                </Typography>
+              </View>
+              <View row gap-10>
+                <Image
+                  source={IMAGES.clickIcon}
+                  style={{ width: 30, height: 30 }}
+                  resizeMode="contain"
+                />
+                <Image
+                  source={IMAGES.signIcon}
+                  style={{
+                    width: 30,
+                    height: 30,
+                    tintColor: passenger.available ? "red" : "gray",
+                  }}
                   resizeMode="contain"
                 />
               </View>
             </View>
-          </View>
+          ))}
         </View>
       </ScrollView>
     </SafeAreaContainer>

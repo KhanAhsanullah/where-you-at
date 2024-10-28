@@ -71,6 +71,8 @@ export const InputText = (props: any) => {
                   height: 25,
                   marginRight: 10,
                   resizeMode: "contain",
+                  tintColor: theme.color.tgray,
+
                 }}
               />
             ),
